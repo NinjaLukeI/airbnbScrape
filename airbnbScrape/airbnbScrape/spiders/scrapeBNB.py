@@ -1,13 +1,22 @@
 import scrapy
+import selenium
 
+from scrapy.selector import Selector
+from selenium import webdriver
 
-class QuotesSpider(scrapy.Spider):
+#driver = webdriver.Chrome("/Users/Luke/PycharmProjects/airbnbScrape/chromedriver")
+#driver.get('https://www.airbnb.co.uk/rooms/33090114?guests=1&adults=1')
+
+#scrapy_selector = Selector(text = driver.page_source)
+#scrapy_selector.xpath('//*[@id="site-content"]/div[1]/div/div/section/div/div/div/div[1]/ol')
+
+class scrapeBNB(scrapy.Spider):
     name = "airbnb"
 
     def start_requests(self):
         urls = [
-            'http://quotes.toscrape.com/page/1/',
-            'http://quotes.toscrape.com/page/2/',
+            'https://www.airbnb.co.uk/rooms/33090114',
+            'https://www.airbnb.co.uk/rooms/50633275sc',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
