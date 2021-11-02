@@ -1,0 +1,14 @@
+My first steps to solving the problem would be finding a library that could make scraping websites easy. I’ve decided to use the Scrapy library on the Python language.
+
+I first need to identify the structure of the website so I know exactly which elements need to be used as selectors for the scraping.
+
+In terms of what I actually did, I first used Scrapy to try and scrape the property name from the site.
+The first issue that I ran into was that Scrapy couldn’t actually retrieve any information from Airbnb; most likely due to the fact it’s dynamically loaded content.
+I decided to use Selenium in tandem with Scrapy so I could simulate an actual browser and retrieve the information that I wanted. After doing this, I was able to retrieve the elements that I needed.
+
+Scrapy typically only handles sites that return 200 status codes, however Airbnb doesn’t return an actual status code as far as I’m concerned; even if the property is a forbidden one.
+So I just put the main code in a try-except block; with the except block checking for the element containing the ‘403’ code. That way the bot would continue running without crashing.
+
+scrapy crawl airbnb -o test.json is needed to run the bot from the terminal. I’m using JSON because it’s an easy format to read.
+
+The way to retrieve the amenities was a bit overcomplicated and would probably be easier with API access.
